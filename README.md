@@ -1,5 +1,8 @@
 # SID converter for Go
 
+![Github Actions Go workflow status](https://github.com/fabiang/sid/workflows/Go/badge.svg)
+[![godoc.org/github.com/fabiang/sid](https://img.shields.io/badge/godoc-latest-blue)](https://godoc.org/github.com/fabiang/sid)
+
 Converter for Security Identifiers (SID) from binary to string.
 
 ## Installation
