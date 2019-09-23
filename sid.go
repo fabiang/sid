@@ -43,9 +43,9 @@ func ConvertToString(input []byte) (string, error) {
 		}
 	}
 
-	stringValue := fmt.Sprintf("S-%d-%d", revision, authority&MASK_48_BIT)
+	sid := fmt.Sprintf("S-%d-%d", revision, authority&MASK_48_BIT)
 	for j := 0; j < numberOfSubAuthorityParts; j++ {
-		stringValue += fmt.Sprintf("-%d", subAuthority[j]&MASK_32_BIT)
+		sid += fmt.Sprintf("-%d", subAuthority[j]&MASK_32_BIT)
 	}
-	return stringValue, nil
+	return sid, nil
 }
