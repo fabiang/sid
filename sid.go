@@ -30,11 +30,17 @@ func ConvertToString(input []byte) (string, error) {
 	buf := bytes.NewReader(input)
 
 	var authority uint64
-	binary.Read(buf, binary.BigEndian, &authority)
+	err := binary.Read(buf, binary.BigEndian, &authority)
+	if err != nil {
+		return "", err
+	}
 
 	var subAuthority = make([]uint32, numberOfSubAuthorityParts)
 	for i := 0; i < numberOfSubAuthorityParts; i++ {
-		binary.Read(buf, binary.LittleEndian, &subAuthority[i])
+		err = binary.Read(buf, binary.LittleEndian, &subAuthority[i])
+		if err != nil {
+			return "", err
+		}
 	}
 
 	stringValue := fmt.Sprintf("S-%d-%d", revision, authority&MASK_48_BIT)
